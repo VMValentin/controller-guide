@@ -32,3 +32,61 @@ ul.tips{padding-left:18px}ul.tips li{margin:10px 0}
 .u{color:var(--acc);font-size:12px}
 footer{color:var(--mute);font-size:12px;letter-spacing:.15em;text-transform:uppercase;text-align:center;padding:32px;border-top:1px solid var(--line)}
 @media(max-width:700px){nav .brand{display:none}td:first-child{white-space:normal}main{padding-top:40px}}
+/* ---- interactive controller ---- */
+:root{--navh:49px}
+main.wide{max-width:1320px;padding-top:40px}
+main.wide h1{margin-bottom:6px}
+.pad{background:var(--bg);z-index:5}
+.pad svg{width:100%;height:auto;display:block;margin:0 auto;touch-action:manipulation}
+.pad .body path,.pad .body rect,.pad .body circle{fill:none;stroke:#fff;stroke-width:1.6;pointer-events:none}
+.pad .body .dim,.pad .dim{stroke:#3a3a3a}
+.ctl{cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.ctl .hit{fill:none;stroke:none;pointer-events:all}
+.ctl .sh{fill:none;stroke:#fff;stroke-width:1.6;transition:stroke .2s}
+.ctl .face{stroke:none}
+.ctl .ld{fill:none;stroke:#444;stroke-width:1}
+.pad text{stroke:none;letter-spacing:2px}
+.pad .lb{fill:#fff;font-size:19px}
+.pad .sm{fill:#8a8a8a;font-size:13px}
+.pad .in{fill:#ddd;font-size:15px}
+.pad .in2{fill:#888;font-size:12px}
+.pad .fl{fill:#000;font-size:20px;font-weight:700;letter-spacing:0;pointer-events:none}
+.ctl:hover .sh{stroke:var(--acc)}
+.ctl.on .sh{stroke:var(--acc);stroke-width:3}
+.ctl.on .face{stroke:#fff;stroke-width:3}
+.ctl.on .ld{stroke:var(--acc)}
+.ctl.on .lb,.ctl.on .in,.ctl.on .sm,.ctl.on .in2{fill:var(--acc)}
+.ctl.on{animation:glow 1.3s ease-in-out infinite}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 2px var(--acc))}50%{filter:drop-shadow(0 0 10px var(--acc)) drop-shadow(0 0 3px var(--acc))}}
+@media (prefers-reduced-motion:reduce){.ctl.on{animation:none;filter:drop-shadow(0 0 6px var(--acc))}}
+.readout{border-top:1px solid var(--line);padding:12px 4px;min-height:64px}
+.readout b{display:block;font-weight:400;letter-spacing:.25em;text-transform:uppercase;font-size:14px;color:var(--acc)}
+.readout span{color:var(--mute);font-size:14px}
+.split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:start;margin-top:28px}
+.split .pad{position:sticky;top:calc(var(--navh) + 16px);border:1px solid var(--line);padding:16px 16px 0}
+.split .pad svg{max-height:calc(100vh - var(--navh) - 150px)}
+.panel{border:1px solid var(--line);overflow-y:auto;position:relative;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.row{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start;width:100%;min-height:56px;padding:14px 16px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:inherit;text-align:left;cursor:pointer}
+.row .k{justify-self:start}
+.row .act{display:block;font-size:15px}.row .where{display:block;color:var(--mute);font-size:13px}
+.row:hover{background:#0a0a0a}
+.row.sel,tr.sel td{background:#07182b}
+.row.sel,.start div.sel{box-shadow:inset 3px 0 0 var(--acc)}
+.row.sel .k,tr.sel .k,.start div.sel .k{border-color:var(--acc);color:var(--acc)}
+.side h2:first-of-type{margin-top:56px}
+tr[role=button],.start div[role=button]{cursor:pointer}
+tr[role=button]:hover td{background:#0a0a0a}
+.start div.sel{border-color:var(--acc)}
+.gpage{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:40px;align-items:start}
+.gpage .pad{position:sticky;top:calc(var(--navh) + 16px);border:1px solid var(--line);padding:12px 12px 0;margin-top:8px}
+.gpage .pad .lb{font-size:24px}.gpage .pad .sm{font-size:16px}
+@media (max-width:900px),(orientation:portrait){
+  .split,.gpage{grid-template-columns:1fr;gap:0}
+  .split .pad,.gpage .pad{position:sticky;top:var(--navh);border:0;border-bottom:1px solid var(--line);padding:8px 0 0;margin:0 -24px;padding-left:24px;padding-right:24px}
+  .split .pad svg{max-height:36vh}
+  .gpage{margin-top:-48px}.gpage .pad{order:-1}.gpage .pad svg{max-height:24vh}
+  .readout{min-height:0;padding:8px 0;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+  .panel{border:0;overflow:visible;height:auto!important}
+  .panel .row{scroll-margin-top:50vh}
+  main.wide{padding-top:28px}
+}
