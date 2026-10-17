@@ -168,3 +168,9 @@ tr.sel .thumb{border-color:var(--acc);box-shadow:0 0 8px var(--acc)}
 .sub.small{font-size:13px;margin:-4px 0 8px}
 .credits{padding-left:18px;color:var(--mute);font-size:12px;line-height:1.6}.credits li{margin:8px 0}.credits a{color:#bbb}
 @media (prefers-reduced-motion:reduce){.thumb.kb img{animation:none}}
+/* desktop/landscape: list on the left, controller on the right */
+@media (min-width:901px) and (orientation:landscape){
+  .split{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}
+  .split .pad{order:2}
+  .split .side{order:1}
+}
