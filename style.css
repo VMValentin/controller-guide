@@ -100,8 +100,8 @@ body.fill .side{min-height:0;height:100%}
 .gpanel .start{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
 .gpanel .note.src{margin-top:16px}
 .ctab td{vertical-align:middle}
-.ctab th:nth-child(2),.ac-cell{width:96px}
-.ctab{table-layout:fixed}.ctab th:first-child{width:112px}
+.ctab th:nth-child(2){width:auto}
+.ctab{table-layout:fixed}.ctab th:first-child{width:112px}.ctab th:last-child{width:150px}
 .an{width:80px;height:64px;display:block}
 .an *{fill:none;stroke:#fff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .an .ac{stroke:var(--acc)}.an .dm{stroke:#444}.an .fa{fill:var(--acc);stroke:none}
@@ -154,3 +154,17 @@ tr.sel .an{filter:drop-shadow(0 0 4px var(--acc))}
   body.fill .side{flex:1;min-height:0;height:auto}
   body.fill .panel.gpanel{height:100%!important;overflow-y:auto;padding:0 0 24px;border:0}
 }
+
+/* thumbnails, combos, credits */
+.thumb{width:96px;height:64px;overflow:hidden;border:1px solid var(--line);background:#0a0a0a}
+.thumb img{width:96px;height:64px;display:block;object-fit:cover;image-rendering:auto}
+.thumb.kb img{animation:kb 7s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.14) translate(-3px,-2px)}}
+img[src*="tr-heal"],img[src*="tr-mana"],img[src*="tr-buff"],img[src*="tr-pickaxe"],img[src*="tr-smartcursor"],img[src*="tr-map"]{image-rendering:pixelated}
+.btn .plus{color:var(--mute);margin:0 2px;font-size:13px}
+.btn .k{margin:2px 0}
+td.btn{line-height:2}
+tr.sel .thumb{border-color:var(--acc);box-shadow:0 0 8px var(--acc)}
+.sub.small{font-size:13px;margin:-4px 0 8px}
+.credits{padding-left:18px;color:var(--mute);font-size:12px;line-height:1.6}.credits li{margin:8px 0}.credits a{color:#bbb}
+@media (prefers-reduced-motion:reduce){.thumb.kb img{animation:none}}
